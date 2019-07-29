@@ -36,7 +36,7 @@ export class FeedViewState {
         if (error) {
           console.log('an error occured');
         } else if (data) {
-          this.feeds = data;
+          this.feeds = data.items;
         }
       }
     );

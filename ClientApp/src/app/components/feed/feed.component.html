@@ -12,10 +12,11 @@
     </div>
     <div class="row">
       <div *ngIf="viewState.feeds">
-        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter"  *ngFor="let feed of viewState.feeds.items">
+        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter"  *ngFor="let feed of viewState.feeds">
             <img  [title]="feed.tags" src='{{feed.media.m}}' [alt]="feed.media.tags"  class="img-responsive">
         </div>
     </div>
+    <div *ngIf="viewState.feeds?.length == 0"> {{viewState.labels.noRecordsFound}}</div>
     </div>
   </div>
 </section>

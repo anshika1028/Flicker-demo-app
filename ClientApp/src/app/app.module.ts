@@ -1,21 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { FeedComponent } from './components/feed/feed.component';
 
-// import { FeedService } from './components/feed/store/services/feed.service';
-import { ConfigService } from './core/config/config.service';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { SearchFeedComponent } from './components/feed/search-feed/search-feed.component';
+import { HttpConfigInterceptor } from './interceptors/http.iterceptors';
 
-
-export function init_app(configService: ConfigService) {
-  return () => configService.getConfig();
-}
 
 @NgModule({
   declarations: [
@@ -30,8 +25,11 @@ export function init_app(configService: ConfigService) {
     SharedModule.forRoot(),
     CoreModule.forRoot(),
   ],
-  providers: [
-    ConfigService, { provide: APP_INITIALIZER, useFactory: init_app, deps: [ConfigService], multi: true }
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpConfigInterceptor,
+    multi: true
+  }
   ],
   bootstrap: [AppComponent]
 })

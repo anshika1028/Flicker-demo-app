@@ -12,7 +12,7 @@ export class CoreViewState {
       () => this.fetchFeedOperation.operation === Operations.completed && this.fetchFeedOperation.data,
       () => {
         if (this.fetchFeedOperation.data) {
-          this.feedsDomainState.feeds = this.fetchFeedOperation.data;
+          this.feedsDomainState.feeds = this.fetchFeedOperation.data.items;
         }
       });
   }

@@ -1,12 +1,13 @@
 export class Feeds {
-    title: string;
-    description: string;
-    items: [{
-        author: string,
-        link: string,
+        author: string;
+        link: string;
         media: {
             m: string
-        },
-        tags
-    }];
+        };
+        tags: any;
+}
+export class FeedsWrapper {
+  title: string;
+  description: string;
+  items: Feeds[];
 }
