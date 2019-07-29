@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CoreViewState } from './core/store/view-state/core.view-state';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AngularApp';
+  constructor(protected coreviewState: CoreViewState) {}
 }

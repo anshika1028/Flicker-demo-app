@@ -1,4 +1,4 @@
-export interface Feeds {
+export class Feeds {
     title: string;
     description: string;
     items: [{
@@ -8,11 +8,5 @@ export interface Feeds {
             m: string
         },
         tags
-    }]
-}
-
-export interface FeedWrapper {
-    data: Feeds;
-    statusCode: number,
-    msg: string
+    }];
 }

@@ -4,12 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
 import { FeedComponent } from './components/feed/feed.component';
-import { ConfigComponent } from './config/config.component';
 
-import { FeedService } from './components/feed/feed.service';
-import { ConfigService } from './config/config.service';
+// import { FeedService } from './components/feed/store/services/feed.service';
+import { ConfigService } from './core/config/config.service';
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+import { SearchFeedComponent } from './components/feed/search-feed/search-feed.component';
 
 
 export function init_app(configService: ConfigService) {
@@ -19,21 +20,18 @@ export function init_app(configService: ConfigService) {
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     FeedComponent,
-    ConfigComponent,
-    
-
-
+    SearchFeedComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SharedModule.forRoot(),
+    CoreModule.forRoot(),
   ],
   providers: [
-    ConfigService, { provide: APP_INITIALIZER, useFactory: init_app, deps: [ConfigService], multi: true },
-    FeedService
+    ConfigService, { provide: APP_INITIALIZER, useFactory: init_app, deps: [ConfigService], multi: true }
   ],
   bootstrap: [AppComponent]
 })

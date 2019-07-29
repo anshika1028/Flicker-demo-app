@@ -1,8 +1,23 @@
-<div *ngIf="feeds">
-    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe"  *ngFor="let feed of feeds.items">
-        <img  [title]="feed.tags" src='{{feed.media.m}}' [alt]="feed.media.tags"  class="img-responsive">
-        <!-- [title]="{{feed.media.tags}}" [alt]="{{feed.media.tags}}" -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h1 class="gallery-title">{{viewState.labels.pageHeading}}</h1>
+      </div>
     </div>
-</div>
+    <div class="row">
+      <div class="search col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-right: 0;">
+          <app-search-feed></app-search-feed>
+      </div>
+    </div>
+    <div class="row">
+      <div *ngIf="viewState.feeds">
+        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter"  *ngFor="let feed of viewState.feeds.items">
+            <img  [title]="feed.tags" src='{{feed.media.m}}' [alt]="feed.media.tags"  class="img-responsive">
+        </div>
+    </div>
+    </div>
+  </div>
+</section>
 
 

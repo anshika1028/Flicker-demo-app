@@ -1,40 +1,22 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { FeedService } from './feed.service';
-import { ConfigService } from '../../config/config.service';
-import { Feeds } from './feeds';
+import { ConfigService } from '../../core/config/config.service';
+import { FeedViewState } from './store/view-state/feed.view-state';
 
+import { FetchFeedsOperationStore } from './store/operations/fetch-feed.operation.store';
+import { FeedService } from './store/services/feed.service';
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.css']
+  styleUrls: ['./feed.component.css'],
+  providers: [FeedViewState, FetchFeedsOperationStore, FeedService]
 })
 export class FeedComponent implements OnInit {
 
-  feeds: Feeds;
-  
-
   private config = ConfigService.config;
 
-  constructor(private feedService: FeedService, private configService: ConfigService) { }
+  constructor(private configService: ConfigService, protected viewState: FeedViewState) { }
 
   ngOnInit() {
-    this.feedService.getFeeds()
-      .subscribe(res => {
-        this.feeds = res.data
-        console.log(this.feeds);
-      }, error => {
-        console.log(error);
-      })
-  }
-
-  fetchFeeds(tags: string) {
-    this.feedService.getFeedsByTags(tags)
-      .subscribe(res => {
-        this.feeds = res.data
-        console.log(this.feeds);
-      }, error => {
-        console.log(error);
-      })
   }
 
 }
