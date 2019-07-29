@@ -1,4 +1,8 @@
-
+.footer{
+  bottom: 0;
+  color: #fff;
+  background: #007bff;
+}
 .gallery-title
 {
     font-size: 40px;
