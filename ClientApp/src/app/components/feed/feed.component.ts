@@ -1,5 +1,4 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { ConfigService } from '../../core/config/config.service';
 import { FeedViewState } from './store/view-state/feed.view-state';
 
 import { FetchFeedsOperationStore } from './store/operations/fetch-feed.operation.store';
@@ -12,9 +11,8 @@ import { FeedService } from './store/services/feed.service';
 })
 export class FeedComponent implements OnInit {
 
-  private config = ConfigService.config;
 
-  constructor(private configService: ConfigService, protected viewState: FeedViewState) { }
+  constructor(protected viewState: FeedViewState) { }
 
   ngOnInit() {
   }

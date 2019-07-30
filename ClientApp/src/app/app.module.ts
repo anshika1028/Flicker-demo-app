@@ -8,7 +8,7 @@ import { FeedComponent } from './components/feed/feed.component';
 
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
-import { SearchFeedComponent } from './components/feed/search-feed/search-feed.component';
+import { SearchFeedComponent } from './components/feed/components/search-feed/search-feed.component';
 import { HttpConfigInterceptor } from './interceptors/http.iterceptors';
 
 

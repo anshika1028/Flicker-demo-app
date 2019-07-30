@@ -7,7 +7,6 @@ const request = require("request-promise-native");
 const log4js = require('log4js');
 const log = log4js.getLogger("feedService");
 const CustomErrorHandler = require('../errorHandler/customErrorHandler'); 
-const dotenv = require('dotenv');
 
 let feedUrl = `https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1`;
 
